@@ -49,7 +49,7 @@ public class Ukrainian implements Human {
 	 інтерфейс*/
 	@Override
     public String speak(){
-		return "Розмовляє на українській";  
+    return "Розмовляє на українській";  
     //Українець, як і Китаєць, теж реалізує інтерфейс Людина, але реалізація методів різна
 	}
 	@Override
