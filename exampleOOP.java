@@ -122,7 +122,7 @@ public class Life {
         organism = new Chuang("Ляо");
         callOrganism(organism);
     }
-     // Всі люди можуть розмовляти, їсти, платити
+     // Всі люди можуть розмовляти, їсти
     public static void callOrganism(Human organism){
 		System.out.println(organism.toString());
         organism.speak();
