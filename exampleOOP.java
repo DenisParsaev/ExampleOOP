@@ -66,7 +66,6 @@ public class Ukrainian implements Human {
 			openMouth();
 		useTeethAndLips();
 		exhale();
-		}
     //Українець, як і Китаєць, теж реалізує інтерфейс Людина, але реалізація методів різна
 	}
 	@Override
