@@ -37,7 +37,7 @@ public class Chinese implements Human { // Клас Китаєць реаліз�
 	}
 	public void readMaoBook(){
 	openMaoBook();
-	for(int num == 1; num<=maoBook.length; num++)
+	for(int num == 1; num<=maoBook.length; num++){
         lookOnPage(num);
     }
     perceiveSymbols();
