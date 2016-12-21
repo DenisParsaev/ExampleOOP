@@ -1,15 +1,17 @@
 // Приклади використання принципів ООП у мові програмування Java
 // Для спрощення я упустив деякі поля і методи, а також перевірки на виключення 
 
-// Інтерфейс забезпечує одразу декілька принципів ООП: абстракція, наслідування, поліморфізм
-public interface Human { // Інтерфейс Людина
-	String speak();
-	String eat();
+// Абстрактий клас лишає программу копіювання коду 
+public abstract class Human {
+    String name;
+	abstract String speak();
+	abstract String eat();
+	public  Human(String name) {
+        this.name = name;
+    }
 }
 *** // Показує, що частина коду умовно знаходиться у іншому файлі 
-public class Chinese implements Human { // Клас Китаєць реалізує інтерфейс Людина
-    private String name; // По канонам інкапсуляції всі поля повинні бути з модифікатором private
-	int a = 0;
+public class Chinese extends Human { // Клас Китаєць наслідує абстрактний клас Людина
 	@Override
     public String speak(){
 		rememberChineseWord();
@@ -27,7 +29,7 @@ public class Chinese implements Human { // Клас Китаєць реаліз�
 			openMouth();
 		}
 	    if(duck > 0){
-		    putAPieceOfDuckInMouth();	
+		    putPieceOfDuckInMouth();	
 	    }else{
 		    putRiceInMouth();
 		}
@@ -42,10 +44,8 @@ public class Chinese implements Human { // Клас Китаєць реаліз�
     }
     perceiveSymbols();
 	}
-	public Chinese(String name) { 
-	/*Саме тут і рятує інкапсуляція: наприклад, можна зробити перевірку на валідність введеного імені,
-	але я її не зробив:)*/ 
-        this.name = name;
+	public Chinese(String name) {  
+        super(name);// Виклик конструктора абстрактного класу Human 
     }
      @Override
     public String toString() {
@@ -54,19 +54,14 @@ public class Chinese implements Human { // Клас Китаєць реаліз�
 }
 ***
 public class Ukrainian implements Human {
-	private name;
-	int a = 1;
-	 /*Хоча Українець і Китаєць звязані спільним інтерфейсом, але вони можуть працювати один без іншого
-	 Це забеспечує роботу клієнського коду з інтерфейсом не маючи інформації про класи, що реалізують цей
-	 інтерфейс*/
-	@Override
+	 @Override
     public String speak(){
       rememberUkrainianWord();
 		if(mouthOpen = false)
 			openMouth();
 		useTeethAndLips();
 		exhale();
-    //Українець, як і Китаєць, теж реалізує інтерфейс Людина, але реалізація методів різна
+    //Українець, як і Китаєць, теж наслідує абстрактний клас Людина, але реалізація методів різна
 	}
 	@Override
     public String eat(){
@@ -86,7 +81,7 @@ public class Ukrainian implements Human {
     perceiveSymbols();
 	}
 	public  Ukrainian(String name) {
-        this.name = name;
+        super(name);
     }
     @Override
     public String toString() {
@@ -94,10 +89,9 @@ public class Ukrainian implements Human {
     }
 }
 ***
-public class Chuang extends Chinese { // Клас Чжуан є наслідником класу Китаєць, що усуває копіювання коду
-    int a = 2;
+public class Chuang extends Chinese { 
     public Chuang(String name) { 
-        super(name); // Виклик конструктора суперкласа
+        super(name); 
     }
     @Override
     public String toString() {
@@ -126,9 +120,9 @@ public class Life {
 		System.out.println(organism.toString());
         organism.speak();
         organism.eat();
-		if(a = 0){
+		if(name = "Лі"){ // Так через перевірку на імена код не підходить для масштабування, але в данній программі я гадаю, що це не страшно
 		    organism.readMaoBook();	
-		}else if(a = 1){
+		}else if(name = "Богдан"){
 			organism.readKobzar();
 		}else{
 			organism.readMaoBook();
