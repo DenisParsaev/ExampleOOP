@@ -45,7 +45,7 @@ public class Chinese extends Human { // Клас Китаєць наслідує
     perceiveSymbols();
 	}
 	public Chinese(String name) {  
-        super(name);// Виклик конструктора абстрактного класу Human 
+        super(name); 
     }
      @Override
     public String toString() {
